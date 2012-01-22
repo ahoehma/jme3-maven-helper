@@ -1,0 +1,20 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.jme3</groupId>
+    <artifactId>jme3-thirdparty</artifactId>
+    <version>3.0.0-SNAPSHOT</version>
+  </parent>
+  <description>
+   - latest version from http://www.j-ogg.de/core/main?/download-libraries.html
+   - contains an directory build/lib/ with all jogg libs
+  </description>
+  <artifactId>jme3-thirdparty-jogg-parent</artifactId>
+  <version>1.4</version>
+  <packaging>pom</packaging>
+  <modules>
+    <module>jogg-oggd</module>
+    <module>jogg-vorbisd</module>
+  </modules>
+</project>
