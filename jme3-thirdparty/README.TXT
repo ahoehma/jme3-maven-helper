@@ -1,0 +1,1 @@
+Execute "mvn install" to install all required jmonkey thirdparty dependencies into local maven repo.

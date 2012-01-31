@@ -96,21 +96,29 @@
   </dependencyManagement>
   <dependencies>
     <dependency>
-      <groupId>com.jme3</groupId>
-      <artifactId>jme3-thirdparty-jogg-oggd</artifactId>
+      <groupId>de.jarnbjo</groupId>
+      <artifactId>j-ogg-vorbisd</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>de.jarnbjo</groupId>
+      <artifactId>j-ogg-oggd</artifactId>
     </dependency>
     <dependency>
       <groupId>com.jme3</groupId>
-      <artifactId>jme3-thirdparty-jogg-vorbisd</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.jme3</groupId>
-      <artifactId>jme3-thirdparty-noise</artifactId>
+      <artifactId>noise</artifactId>
     </dependency>
     <dependency>
       <groupId>com.jme3</groupId>
       <artifactId>jme3-thirdparty-lwjgl</artifactId>
       <classifier>natives</classifier>
+    </dependency>
+    <dependency>
+      <groupId>asm</groupId>
+      <artifactId>asm-all</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>java3d</groupId>
+      <artifactId>vecmath</artifactId>
     </dependency>
     <dependency>
       <groupId>lessvoid</groupId>
@@ -144,13 +152,11 @@
       <dependencies>
         <dependency>
           <groupId>com.jme3</groupId>
-          <artifactId>jme3-thirdparty-jbullet</artifactId>
-          <version>2010-april-normen667-fix</version>
+          <artifactId>jbullet</artifactId>
         </dependency>
         <dependency>
           <groupId>com.jme3</groupId>
-          <artifactId>jme3-thirdparty-jbullet-stack-alloc</artifactId>
-          <version>20080716</version>
+          <artifactId>stack-alloc</artifactId>
         </dependency>
       </dependencies>
       <build>

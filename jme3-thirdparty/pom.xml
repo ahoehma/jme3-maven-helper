@@ -9,18 +9,18 @@
     <dependencies>
       <!-- no public maven repos -->
       <dependency>
-        <groupId>com.jme3</groupId>
-        <artifactId>jme3-thirdparty-jogg-oggd</artifactId>
-        <version>1.4</version>
+        <groupId>de.jarnbjo</groupId>
+        <artifactId>j-ogg-vorbisd</artifactId>
+        <version>2003</version>
+      </dependency>
+      <dependency>
+        <groupId>de.jarnbjo</groupId>
+        <artifactId>j-ogg-oggd</artifactId>
+        <version>2003</version>
       </dependency>
       <dependency>
         <groupId>com.jme3</groupId>
-        <artifactId>jme3-thirdparty-jogg-vorbisd</artifactId>
-        <version>1.4</version>
-      </dependency>
-      <dependency>
-        <groupId>com.jme3</groupId>
-        <artifactId>jme3-thirdparty-noise</artifactId>
+        <artifactId>noise</artifactId>
         <version>0.0.1-SNAPSHOT</version>
       </dependency>
       <dependency>
@@ -39,7 +39,27 @@
           </exclusion>
         </exclusions>
       </dependency>
+      <dependency>
+        <groupId>com.jme3</groupId>
+        <artifactId>jbullet</artifactId>
+        <version>3.0.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.jme3</groupId>
+        <artifactId>stack-alloc</artifactId>
+        <version>3.0.0-SNAPSHOT</version>
+      </dependency>
       <!-- from public maven repos -->
+      <dependency>
+        <groupId>asm</groupId>
+        <artifactId>asm-all</artifactId>
+        <version>3.1</version>
+      </dependency>
+      <dependency>
+        <groupId>java3d</groupId>
+        <artifactId>vecmath</artifactId>
+        <version>1.3.1</version>
+      </dependency>
       <dependency>
         <groupId>lessvoid</groupId>
         <artifactId>nifty</artifactId>
@@ -63,15 +83,79 @@
     </dependencies>
   </dependencyManagement>
   <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-install-plugin</artifactId>
-          <version>2.3.1</version>
-        </plugin>
-      </plugins>
-    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>com.savage7.maven.plugins</groupId>
+        <artifactId>maven-external-dependency-plugin</artifactId>
+        <version>0.4</version>
+        <configuration>
+          <stagingDirectory>${project.build.directory}/dependencies/</stagingDirectory>
+          <createChecksum>true</createChecksum>
+          <skipChecksumVerification>true</skipChecksumVerification>
+          <force>false</force>
+          <artifactItems>
+            <artifactItem>
+              <groupId>com.jme3</groupId>
+              <artifactId>jbullet</artifactId>
+              <version>3.0.0-SNAPSHOT</version>
+              <packaging>jar</packaging>
+              <downloadUrl>http://jmonkeyengine.googlecode.com/svn/trunk/engine/lib/jbullet/jbullet.jar</downloadUrl>
+            </artifactItem>
+            <artifactItem>
+              <groupId>com.jme3</groupId>
+              <artifactId>stack-alloc</artifactId>
+              <version>3.0.0-SNAPSHOT</version>
+              <packaging>jar</packaging>
+              <downloadUrl>http://jmonkeyengine.googlecode.com/svn/trunk/engine/lib/jbullet/stack-alloc.jar</downloadUrl>
+            </artifactItem>
+            <artifactItem>
+              <groupId>com.jme3</groupId>
+              <artifactId>noise</artifactId>
+              <version>0.0.1-SNAPSHOT</version>
+              <packaging>jar</packaging>
+              <downloadUrl>http://jmonkeyengine.googlecode.com/svn/trunk/engine/lib/noise/noise-0.0.1-SNAPSHOT.jar</downloadUrl>
+            </artifactItem>
+            <artifactItem>
+              <groupId>de.jarnbjo</groupId>
+              <artifactId>j-ogg-oggd</artifactId>
+              <version>2003</version>
+              <packaging>jar</packaging>
+              <install>true</install>
+              <force>false</force>
+              <downloadUrl>http://www.j-ogg.de/j-ogg.zip</downloadUrl>
+              <extractFile>j-ogg/build/lib/j-ogg-oggd.jar</extractFile>
+            </artifactItem>
+            <artifactItem>
+              <groupId>de.jarnbjo</groupId>
+              <artifactId>j-ogg-vorbisd</artifactId>
+              <version>2003</version>
+              <packaging>jar</packaging>
+              <install>true</install>
+              <force>false</force>
+              <downloadUrl>http://www.j-ogg.de/j-ogg.zip</downloadUrl>
+              <extractFile>j-ogg/build/lib/j-ogg-vorbisd.jar</extractFile>
+            </artifactItem>
+          </artifactItems>
+        </configuration>
+        <executions>
+          <execution>
+            <id>clean-external-dependencies</id>
+            <phase>clean</phase>
+            <goals>
+              <goal>clean-external</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>resolve-install-external-dependencies</id>
+            <phase>install</phase>
+            <goals>
+              <goal>resolve-external</goal>
+              <goal>install-external</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
   <repositories>
     <repository>
@@ -80,9 +164,6 @@
     </repository>
   </repositories>
   <modules>
-    <module>jbullet</module>
-    <module>jogg</module>
-    <module>noise</module>
     <module>lwjgl</module>
   </modules>
   <properties>
