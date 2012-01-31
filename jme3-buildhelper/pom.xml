@@ -108,8 +108,9 @@
       <artifactId>jme3-thirdparty-noise</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.lwjgl.lwjgl</groupId>
-      <artifactId>lwjgl</artifactId>
+      <groupId>com.jme3</groupId>
+      <artifactId>jme3-thirdparty-lwjgl</artifactId>
+      <classifier>natives</classifier>
     </dependency>
     <dependency>
       <groupId>lessvoid</groupId>
