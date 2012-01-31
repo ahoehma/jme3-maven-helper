@@ -1,0 +1,34 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+  <id>natives</id>
+  <formats>
+    <format>jar</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <dependencySets>
+    <dependencySet>
+      <includes>
+        <include>org.lwjgl.lwjgl:lwjgl-platform:jar:natives-windows</include>
+        <include>net.java.jinput:jinput-platform:jar:natives-windows</include>
+      </includes>
+      <unpack>true</unpack>
+      <outputDirectory>native/windows</outputDirectory>
+    </dependencySet>
+    <dependencySet>
+      <includes>
+        <include>org.lwjgl.lwjgl:lwjgl-platform:jar:natives-linux</include>
+        <include>net.java.jinput:jinput-platform:jar:natives-linux</include>
+      </includes>
+      <unpack>true</unpack>
+      <outputDirectory>native/linux</outputDirectory>
+    </dependencySet>
+    <dependencySet>
+      <includes>
+        <include>org.lwjgl.lwjgl:lwjgl-platform:jar:natives-osx</include>
+        <include>net.java.jinput:jinput-platform:jar:natives-osx</include>
+      </includes>
+      <unpack>true</unpack>
+      <outputDirectory>native/maxosx</outputDirectory>
+    </dependencySet>
+  </dependencySets>
+</assembly>
