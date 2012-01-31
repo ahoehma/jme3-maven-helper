@@ -5,6 +5,7 @@
     <groupId>com.jme3</groupId>
     <artifactId>jme3-thirdparty</artifactId>
     <version>3.0.0-SNAPSHOT</version>
+    <relativePath>../..</relativePath>
   </parent>
   <groupId>com.jme3</groupId>
   <artifactId>jme3-thirdparty-jogg-vorbisd</artifactId>
