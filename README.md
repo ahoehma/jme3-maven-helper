@@ -21,8 +21,10 @@ Now you can build jme3 with maven!
 Use JME3 in maven project
 -------------------------
 
+```xml
   <dependency>
       <groupId>com.jme3</groupId>
       <artifactId>jMonkeyEngine3</artifactId>
       <version>3.0.0-SNAPSHOT</version>
   </dependency>
+```
