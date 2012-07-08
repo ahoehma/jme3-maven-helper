@@ -32,15 +32,16 @@
                 <source>${basedir}/src/blender</source>
                 <source>${basedir}/src/bullet-common</source>
                 <source>${basedir}/src/core</source>
+                <source>${basedir}/src/core-effects</source>
                 <source>${basedir}/src/core-plugins</source>
                 <source>${basedir}/src/desktop</source>
                 <source>${basedir}/src/jogg</source>
+                <source>${basedir}/src/jheora</source>
                 <source>${basedir}/src/lwjgl</source>
                 <source>${basedir}/src/networking</source>
                 <source>${basedir}/src/niftygui</source>
                 <source>${basedir}/src/ogre</source>
                 <source>${basedir}/src/test</source>
-                <source>${basedir}/src/test-data</source>
                 <source>${basedir}/src/tools</source>
                 <source>${basedir}/src/xml</source>
                 <source>${basedir}/src/terrain</source>
@@ -95,6 +96,10 @@
     </dependencies>
   </dependencyManagement>
   <dependencies>
+    <dependency>
+      <groupId>cortado</groupId>
+      <artifactId>ovt</artifactId>
+    </dependency>
     <dependency>
       <groupId>de.jarnbjo</groupId>
       <artifactId>j-ogg-vorbisd</artifactId>
@@ -221,13 +226,13 @@
     </profile>
     <profile>
       <id>android</id>
+      <!-- http://www.sonatype.com/books/mvnref-book/reference/android-dev-sect-config-build.html -->
       <dependencies>
         <dependency>
           <groupId>android</groupId>
           <artifactId>android</artifactId>
-          <version>1.0.0</version>
-          <systemPath>${basedir}/lib/android/android.jar</systemPath>
-          <scope>system</scope>
+          <version>4.1_r1</version>
+          <scope>provided</scope>
         </dependency>
       </dependencies>
       <build>
