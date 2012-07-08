@@ -9,6 +9,11 @@
     <dependencies>
       <!-- no public maven repos -->
       <dependency>
+        <groupId>cortado</groupId>
+        <artifactId>ovt</artifactId>
+        <version>0.6.0</version>
+      </dependency>
+      <dependency>
         <groupId>de.jarnbjo</groupId>
         <artifactId>j-ogg-vorbisd</artifactId>
         <version>2003</version>
@@ -134,6 +139,15 @@
               <force>false</force>
               <downloadUrl>http://www.j-ogg.de/j-ogg.zip</downloadUrl>
               <extractFile>j-ogg/build/lib/j-ogg-vorbisd.jar</extractFile>
+            </artifactItem>
+            <artifactItem>
+              <groupId>cortado</groupId>
+              <artifactId>ovt</artifactId>
+              <version>0.6.0</version>
+              <packaging>jar</packaging>
+              <install>true</install>
+              <force>false</force>
+              <downloadUrl>http://downloads.xiph.org/releases/cortado/cortado-ovt-debug-0.6.0.jar</downloadUrl>
             </artifactItem>
           </artifactItems>
         </configuration>
