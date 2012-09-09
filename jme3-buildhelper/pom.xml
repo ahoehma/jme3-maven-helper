@@ -4,6 +4,9 @@
   <groupId>com.jme3</groupId>
   <artifactId>jMonkeyEngine3</artifactId>
   <version>3.0.0-SNAPSHOT</version>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
   <build>
     <pluginManagement>
       <plugins>
@@ -27,7 +30,7 @@
         <artifactId>build-helper-maven-plugin</artifactId>
         <executions>
           <execution>
-            <id>base-sources</id>
+            <id>add-sources</id>
             <phase>generate-sources</phase>
             <goals>
               <goal>add-source</goal>
@@ -35,6 +38,7 @@
             <configuration>
               <sources>
                 <source>${basedir}/src/blender</source>
+                <source>${basedir}/src/desktop</source>
                 <source>${basedir}/src/bullet-common</source>
                 <source>${basedir}/src/core</source>
                 <source>${basedir}/src/core-effects</source>
@@ -54,7 +58,7 @@
             </configuration>
           </execution>
           <execution>
-            <id>base-resources</id>
+            <id>add-resources</id>
             <phase>generate-resources</phase>
             <goals>
               <goal>add-resource</goal>
@@ -72,6 +76,29 @@
                   <directory>${basedir}/src/core-data</directory>
                   <filtering>false</filtering>
                 </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>add-test-sources</id>
+            <phase>generate-test-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>${basedir}/test</source>
+              </sources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>add-test-resources</id>
+            <phase>generate-test-resources</phase>
+            <goals>
+              <goal>add-resource</goal>
+            </goals>
+            <configuration>
+              <resources> 
                 <resource>
                   <directory>${basedir}/test-data</directory>
                   <filtering>false</filtering>
@@ -152,6 +179,12 @@
       <groupId>lessvoid</groupId>
       <artifactId>nifty-style-black</artifactId>
     </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.10</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
   <profiles>
     <profile>
@@ -208,6 +241,33 @@
       </dependencies>
       <build>
         <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <version>1.7</version>
+            <executions>
+              <execution>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <tasks>
+                <ant antfile="nbproject/build-bullet-natives.xml" target="build-bullet-natives" />
+              </tasks>
+            </configuration>
+            <dependencies>
+              <dependency>
+                <groupId>com.sun</groupId>
+                <artifactId>tools</artifactId>
+                <version>1.7</version>
+                <scope>system</scope>
+                <systemPath>${java.home}/../lib/tools.jar</systemPath>
+              </dependency>
+            </dependencies>
+          </plugin>
           <plugin>
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>build-helper-maven-plugin</artifactId>
